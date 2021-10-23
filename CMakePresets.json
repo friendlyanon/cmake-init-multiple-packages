@@ -7,22 +7,47 @@
   },
   "configurePresets": [
     {
-      "name": "package-common",
+      "name": "group-a",
+      "description": "Associate components multiple-packages_a_Development and multiple-packages_a_Runtime to group multiple-packages_a",
+      "hidden": true,
+      "cacheVariables": {
+        "CPACK_COMPONENT_MULTIPLE-PACKAGES_A_DEVELOPMENT_GROUP": "multiple-packages_a",
+        "CPACK_COMPONENT_MULTIPLE-PACKAGES_A_RUNTIME_GROUP": "multiple-packages_a"
+      }
+    },
+    {
+      "name": "group-b",
+      "description": "Associate components multiple-packages_b_Development and multiple-packages_b_Runtime to group multiple-packages_b",
+      "hidden": true,
+      "cacheVariables": {
+        "CPACK_COMPONENT_MULTIPLE-PACKAGES_B_DEVELOPMENT_GROUP": "multiple-packages_b",
+        "CPACK_COMPONENT_MULTIPLE-PACKAGES_B_RUNTIME_GROUP": "multiple-packages_b"
+      }
+    },
+    {
+      "name": "package-zip-using-groups",
+      "inherits": ["group-a", "group-b"],
+      "description": "Request the archive generator (which handles ZIP) to package using the above defined groups",
       "hidden": true,
       "cacheVariables": {
         "CPACK_GENERATOR": "ZIP",
-        "CPACK_STRIP_FILES": "ON",
-        "CPACK_VERBATIM_VARIABLES": "ON",
-        "CPACK_SOURCE_ZIP": "OFF",
-        "CPACK_SOURCE_GENERATOR": "ZIP",
         "CPACK_ARCHIVE_COMPONENT_INSTALL": "ON"
+      }
+    },
+    {
+      "name": "package-zip-common",
+      "inherits": "package-zip-using-groups",
+      "hidden": true,
+      "cacheVariables": {
+        "CPACK_STRIP_FILES": "ON",
+        "CPACK_VERBATIM_VARIABLES": "ON"
       }
     },
     {
       "name": "package-zip-unix",
       "binaryDir": "${sourceDir}/build/unix",
       "generator": "Unix Makefiles",
-      "inherits": "package-common",
+      "inherits": "package-zip-common",
       "cacheVariables": {
         "CMAKE_BUILD_TYPE": "Release"
       }
@@ -32,7 +57,7 @@
       "binaryDir": "${sourceDir}/build/win64",
       "generator": "Visual Studio 16 2019",
       "architecture": "x64",
-      "inherits": "package-common"
+      "inherits": "package-zip-common"
     }
   ]
 }

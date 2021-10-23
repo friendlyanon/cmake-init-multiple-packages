@@ -1,5 +1,4 @@
 include(CMakePackageConfigHelpers)
-include(CPackComponent)
 include(GNUInstallDirs)
 
 foreach(name IN ITEMS a b)
@@ -41,12 +40,6 @@ foreach(name IN ITEMS a b)
       DESTINATION "${${package}_INSTALL_CMAKEDIR}"
       COMPONENT "${component}_Development"
   )
-
-  # These become noop if the project is not top level, because the CPack module
-  # is not included here
-  cpack_add_component_group("${package}")
-  cpack_add_component("${component}_Development" GROUP "${package}")
-  cpack_add_component("${component}_Runtime" GROUP "${package}")
 endforeach()
 
 if(PROJECT_IS_TOP_LEVEL)

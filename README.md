@@ -11,12 +11,12 @@ This project has 2 component groups:
 * `multiple-packages_a`
 * `multiple-packages_b`
 
-These component groups are defined using commands from the `CPackComponent`
-module, which only take effect if this project is the top-level one, so it's
-not necessary to guard them. Each component group has 2 components associated
-to them, which are the runtime and development components.
+These component groups are defined using variables in the `group-a` and
+`group-b` presets. The same result could have been achieved by using commands
+from the `CPackComponent` module. Each component group has 2 components
+associated to them, which are the runtime and development components.
 
-Take a look at the [install rules](cmake/install-rules.cmake) for more details.
+Take a look at the [presets](CMakePresets.json) for more details.
 
 ## Packaging
 
