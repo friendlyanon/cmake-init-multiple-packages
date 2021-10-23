@@ -1,0 +1,20 @@
+name: Continuous Integration
+
+on: [push]
+
+jobs:
+  package:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Configure
+      run: cmake --preset=package-zip-unix
+
+    - name: Build
+      run: cmake --build build/unix -j 2
+
+    - name: Package
+      working-directory: build/unix
+      run: cpack --verbose

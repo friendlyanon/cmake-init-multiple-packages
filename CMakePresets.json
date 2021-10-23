@@ -1,0 +1,38 @@
+{
+  "version": 1,
+  "cmakeMinimumRequired": {
+    "major": 3,
+    "minor": 14,
+    "patch": 0
+  },
+  "configurePresets": [
+    {
+      "name": "package-common",
+      "hidden": true,
+      "cacheVariables": {
+        "CPACK_GENERATOR": "ZIP",
+        "CPACK_STRIP_FILES": "ON",
+        "CPACK_VERBATIM_VARIABLES": "ON",
+        "CPACK_SOURCE_ZIP": "OFF",
+        "CPACK_SOURCE_GENERATOR": "ZIP",
+        "CPACK_ARCHIVE_COMPONENT_INSTALL": "ON"
+      }
+    },
+    {
+      "name": "package-zip-unix",
+      "binaryDir": "${sourceDir}/build/unix",
+      "generator": "Unix Makefiles",
+      "inherits": "package-common",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Release"
+      }
+    },
+    {
+      "name": "package-zip-win64",
+      "binaryDir": "${sourceDir}/build/win64",
+      "generator": "Visual Studio 16 2019",
+      "architecture": "x64",
+      "inherits": "package-common"
+    }
+  ]
+}
