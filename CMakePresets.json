@@ -11,6 +11,7 @@
       "description": "Associate components multiple-packages_a_Development and multiple-packages_a_Runtime to group multiple-packages_a",
       "hidden": true,
       "cacheVariables": {
+        "CPACK_COMPONENT_MULTIPLE-PACKAGES_A_DEVELOPMENT_DEPENDS": "multiple-packages_a_Runtime",
         "CPACK_COMPONENT_MULTIPLE-PACKAGES_A_DEVELOPMENT_GROUP": "multiple-packages_a",
         "CPACK_COMPONENT_MULTIPLE-PACKAGES_A_RUNTIME_GROUP": "multiple-packages_a"
       }
@@ -20,6 +21,7 @@
       "description": "Associate components multiple-packages_b_Development and multiple-packages_b_Runtime to group multiple-packages_b",
       "hidden": true,
       "cacheVariables": {
+        "CPACK_COMPONENT_MULTIPLE-PACKAGES_B_DEVELOPMENT_DEPENDS": "multiple-packages_b_Runtime",
         "CPACK_COMPONENT_MULTIPLE-PACKAGES_B_DEVELOPMENT_GROUP": "multiple-packages_b",
         "CPACK_COMPONENT_MULTIPLE-PACKAGES_B_RUNTIME_GROUP": "multiple-packages_b"
       }
