@@ -2,14 +2,13 @@ include(CMakePackageConfigHelpers)
 include(GNUInstallDirs)
 
 foreach(name IN ITEMS a b)
-  set(component "multiple-packages_${name}")
-  set(export "multiple-packages_${name}Targets")
   set(package "multiple-packages_${name}")
+  set(export "${package}Targets")
 
   install(
       TARGETS "multiple-packages_${name}"
       EXPORT "${export}"
-      RUNTIME COMPONENT "${component}_Runtime"
+      RUNTIME COMPONENT "${package}_Runtime"
   )
 
   configure_file(cmake/install-config.cmake.in "${package}Config.cmake" @ONLY)
@@ -31,14 +30,14 @@ foreach(name IN ITEMS a b)
       "${PROJECT_BINARY_DIR}/${package}Config.cmake"
       "${PROJECT_BINARY_DIR}/${package}ConfigVersion.cmake"
       DESTINATION "${${package}_INSTALL_CMAKEDIR}"
-      COMPONENT "${component}_Development"
+      COMPONENT "${package}_Development"
   )
 
   install(
       EXPORT "${export}"
       NAMESPACE multiple-packages::
       DESTINATION "${${package}_INSTALL_CMAKEDIR}"
-      COMPONENT "${component}_Development"
+      COMPONENT "${package}_Development"
   )
 endforeach()
 

@@ -1,1 +1,1 @@
-include("${CMAKE_CURRENT_LIST_DIR}/multiple-packages_@name@Targets.cmake")
+include("${CMAKE_CURRENT_LIST_DIR}/@export@.cmake")
